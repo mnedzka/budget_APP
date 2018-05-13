@@ -32,10 +32,10 @@ body {
 **********************************************/
 
 .top {
-    height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(back.png);
+    height: 50vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(../back.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: 64% 90%;
     position: relative;
 }
 
@@ -123,12 +123,6 @@ body {
 }
 
 
-
-
-
-
-
-
 /**********************************************
 *** BOTTOM PART
 **********************************************/
@@ -206,11 +200,24 @@ body {
     float: left;
     width: 475px;
     margin-right: 50px;
+
+    &__title { 
+        color: #28B9B5; 
+    }
+
+    .item__value,
+    .item__delete--btn {
+        color: #28B9B5;
+    }
 }
 
 .expenses {
     float: left;
     width: 475px;
+
+    &__title { 
+        color: #FF5049; 
+    }
 }
 
 h2 {
@@ -220,41 +227,37 @@ h2 {
     margin-bottom: 15px;
 }
 
-.icome__title { color: #28B9B5; }
-.expenses__title { color: #FF5049; }
-
 .item {
     padding: 13px;
     border-bottom: 1px solid #e7e7e7;
-}
 
-.item:first-child { border-top: 1px solid #e7e7e7; }
-.item:nth-child(even) { background-color: #f7f7f7; }
+    &:first-child { 
+        border-top: 1px solid #e7e7e7; 
+    }
+    &:nth-child(even) { 
+        background-color: #f7f7f7; 
+    }
 
-.item__description {
-    float: left;
-}
+    &__description {
+        float: left;
+    }
 
-.item__value {
-    float: left;
-    transition: transform 0.3s;
-}
+    &__value {
+        float: left;
+        transition: transform 0.3s;
+    }
 
-.item__percentage {
-    float: left;
-    margin-left: 20px;
-    transition: transform 0.3s;
-    font-size: 11px;
-    background-color: #FFDAD9;
-    padding: 3px;
-    border-radius: 3px;
-    width: 32px;
-    text-align: center;
-}
-
-.income .item__value,
-.income .item__delete--btn {
-    color: #28B9B5;
+    &__percentage {
+        float: left;
+        margin-left: 20px;
+        transition: transform 0.3s;
+        font-size: 11px;
+        background-color: #FFDAD9;
+        padding: 3px;
+        border-radius: 3px;
+        width: 32px;
+        text-align: center;
+    }
 }
 
 .expenses .item__value,
@@ -262,7 +265,6 @@ h2 {
 .expenses .item__delete--btn {
     color: #FF5049;
 }
-
 
 .item__delete {
     float: left;
