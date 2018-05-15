@@ -21,7 +21,7 @@ const UIController = (() => {
 
       if (type === "inc") {
         element = DOMStrings.incomeContainer;
-        html = `div class="item clearfix" id="income-%id%">
+        html = `<div class="item clearfix" id="income-%id%">
                     <div class="item__description">%description%</div>
                     <div class="right clearfix">
                         <div class="item__value">%value%</div>
@@ -44,9 +44,25 @@ const UIController = (() => {
                 </div>`;
       }
 
+      // Replace plceholders with real data
       newHtml = html.replace("%id%", obj.id);
       newHtml = newHtml.replace("%description%", obj.description);
       newHtml = newHtml.replace("%value%", obj.value);
+
+      //Inser HTMl into the DOM
+      document.querySelector(element).insertAdjacentHTML("beforeend", newHtml);
+    },
+    clearFields() {
+      let fields;
+
+      fields = Array.from(
+        document.querySelectorAll(
+          DOMStrings.inputDescription + ", " + DOMStrings.inputValue
+        )
+      );
+
+      fields.forEach(item => (item.value = ""));
+      fields[0].focus();
     },
     getDOMStrings() {
       return DOMStrings;

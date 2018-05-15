@@ -18,9 +18,17 @@ const controller = ((budgetCtrl, UICtrl) => {
   const ctrlAddItem = () => {
     let input, newItem;
 
+    // Get the field input data
     input = UICtrl.getInput();
 
+    // Add the item to the budget controller
     newItem = budgetCtrl.addNewItem(input.type, input.description, input.value);
+
+    //Add the item to the UI
+    UICtrl.addListItem(newItem, input.type);
+
+    // Clear the fileds
+    UICtrl.clearFields();
   };
 
   return {

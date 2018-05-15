@@ -33,7 +33,7 @@ const budgetController = (() => {
   };
 
   return {
-    addItem(type, des, val) {
+    addNewItem(type, des, val) {
       let newItem, ID;
 
       if (data.allItems[type].length > 0) {
