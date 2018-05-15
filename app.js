@@ -16,7 +16,8 @@ const controller = ((budgetCtrl, UICtrl) => {
   };
 
   const ctrlAddItem = () => {
-    const input, newItem;
+    let input, newItem;
+
     input = UICtrl.getInput();
 
     newItem = budgetCtrl.addNewItem(input.type, input.description, input.value);
