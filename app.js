@@ -15,7 +15,15 @@ const controller = ((budgetCtrl, UICtrl) => {
     });
   };
 
-  const updateBudget = {};
+  const updateBudget = () => {
+    //calculate the budget
+    budgetCtrl.calculateBudget();
+
+    //return the budget
+    const budget = budgetCtrl.getBudget();
+
+    console.log(budget);
+  };
 
   const ctrlAddItem = () => {
     let input, newItem;
