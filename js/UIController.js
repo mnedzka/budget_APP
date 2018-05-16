@@ -13,7 +13,7 @@ const UIController = (() => {
       return {
         type: document.querySelector(DOMStrings.inputType).value,
         description: document.querySelector(DOMStrings.inputDescription).value,
-        value: document.querySelector(DOMStrings.inputValue).value
+        value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
       };
     },
     addListItem(obj, type) {
