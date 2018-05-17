@@ -22,6 +22,9 @@ const controller = ((budgetCtrl, UICtrl) => {
     //return the budget
     const budget = budgetCtrl.getBudget();
 
+    //display the budget on the UI
+    UICtrl.displayBudget(budget);
+
     console.log(budget);
   };
 
@@ -53,6 +56,12 @@ const controller = ((budgetCtrl, UICtrl) => {
   return {
     init() {
       console.log("Application has started...");
+      UICtrl.displayBudget({
+        budget: 0,
+        totalInc: 0,
+        totalExp: 0,
+        percentage: -1
+      });
       setupEventListeners();
     }
   };

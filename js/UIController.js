@@ -5,7 +5,11 @@ const UIController = (() => {
     inputValue: ".add__value",
     inputBtn: ".add__btn",
     incomeContainer: ".income__list",
-    expensesContainer: ".expenses__list"
+    expensesContainer: ".expenses__list",
+    budgetLabel: ".budget__value",
+    incomeLabel: ".budget__income--label",
+    expensesLabel: ".budget__expenses--label",
+    percentageLabel: ".budget__expenses--percentage"
   };
 
   return {
@@ -63,6 +67,20 @@ const UIController = (() => {
 
       fields.forEach(item => (item.value = ""));
       fields[0].focus();
+    },
+
+    displayBudget(obj) {
+      document.querySelector(DOMStrings.budgetLabel).textContent = obj.budget;
+      document.querySelector(DOMStrings.incomeLabel).textContent = obj.totalInc;
+      document.querySelector(DOMStrings.expensesLabel).textContent =
+        obj.totalExp;
+
+      if (obj.percentage > 0) {
+        document.querySelector(DOMStrings.percentageLabel).textContent =
+          obj.percentage + "%";
+      } else {
+        document.querySelector(DOMStrings.percentageLabel).textContent = "---";
+      }
     },
     getDOMStrings() {
       return DOMStrings;
