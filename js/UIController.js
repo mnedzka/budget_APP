@@ -7,9 +7,10 @@ const UIController = (() => {
     incomeContainer: ".income__list",
     expensesContainer: ".expenses__list",
     budgetLabel: ".budget__value",
-    incomeLabel: ".budget__income--label",
-    expensesLabel: ".budget__expenses--label",
-    percentageLabel: ".budget__expenses--percentage"
+    incomeLabel: ".budget__income--value",
+    expensesLabel: ".budget__expenses--value",
+    percentageLabel: ".budget__expenses--percentage",
+    container: ".container"
   };
 
   return {
@@ -25,7 +26,7 @@ const UIController = (() => {
 
       if (type === "inc") {
         element = DOMStrings.incomeContainer;
-        html = `<div class="item clearfix" id="income-%id%">
+        html = `<div class="item clearfix" id="inc-%id%">
                     <div class="item__description">%description%</div>
                     <div class="right clearfix">
                         <div class="item__value">%value%</div>
@@ -36,7 +37,7 @@ const UIController = (() => {
                 </div>`;
       } else if (type === "exp") {
         element = DOMStrings.expensesContainer;
-        html = `<div class="item clearfix" id="expense-%id%">
+        html = `<div class="item clearfix" id="exp-%id%">
                     <div class="item__description">%description%</div>
                     <div class="right clearfix">
                         <div class="item__value">%value%</div>

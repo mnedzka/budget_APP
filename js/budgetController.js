@@ -21,7 +21,7 @@ const budgetController = (() => {
     }
   }
 
-  const calculateTotal = typ => {
+  const calculateTotal = type => {
     let sum = 0;
     data.allItems[type].forEach(item => (sum += item.value));
     data.totals[type] = sum;

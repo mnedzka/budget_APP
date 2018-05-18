@@ -13,6 +13,8 @@ const controller = ((budgetCtrl, UICtrl) => {
         ctrlAddItem();
       }
     });
+
+    document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem)
   };
 
   const updateBudget = () => {
@@ -20,7 +22,7 @@ const controller = ((budgetCtrl, UICtrl) => {
     budgetCtrl.calculateBudget();
 
     //return the budget
-    const budget = budgetCtrl.getBudget();
+    let budget = budgetCtrl.getBudget();
 
     //display the budget on the UI
     UICtrl.displayBudget(budget);
@@ -30,10 +32,10 @@ const controller = ((budgetCtrl, UICtrl) => {
 
   const ctrlAddItem = () => {
     let input, newItem;
+    // Get the field input data
+    input = UICtrl.getInput();
 
     if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
-      // Get the field input data
-      input = UICtrl.getInput();
 
       // Add the item to the budget controller
       newItem = budgetCtrl.addNewItem(
@@ -50,6 +52,18 @@ const controller = ((budgetCtrl, UICtrl) => {
 
       //calculate and update budget
       updateBudget();
+    }
+  };
+
+  const ctrlDeleteItem = (e) => {
+    let itemID, splitID, type, ID;
+
+    itemID = e.target.parentNode.parentNode.parentNode.parentNode.id;
+
+    if (itemID) {
+      splitID = itemID.split("-");
+      type = splitID[0];
+      ID = splitID[1];
     }
   };
 
