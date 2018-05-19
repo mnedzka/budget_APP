@@ -60,6 +60,20 @@ const budgetController = (() => {
       return newItem;
     },
 
+    deleteItem(type, id) {
+      let ids, index;
+
+      ids = data.allItems[type].map(item => {
+        return item.id;
+      });
+
+      index = ids.indexOf(id);
+
+      if (index !== -1) {
+        data.allItems[type].splice(index, 1);
+      }
+    },
+
     testing() {
       console.log(data);
     },

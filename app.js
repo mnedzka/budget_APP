@@ -14,7 +14,9 @@ const controller = ((budgetCtrl, UICtrl) => {
       }
     });
 
-    document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem)
+    document
+      .querySelector(DOM.container)
+      .addEventListener("click", ctrlDeleteItem);
   };
 
   const updateBudget = () => {
@@ -36,7 +38,6 @@ const controller = ((budgetCtrl, UICtrl) => {
     input = UICtrl.getInput();
 
     if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
-
       // Add the item to the budget controller
       newItem = budgetCtrl.addNewItem(
         input.type,
@@ -55,7 +56,7 @@ const controller = ((budgetCtrl, UICtrl) => {
     }
   };
 
-  const ctrlDeleteItem = (e) => {
+  const ctrlDeleteItem = e => {
     let itemID, splitID, type, ID;
 
     itemID = e.target.parentNode.parentNode.parentNode.parentNode.id;
@@ -63,8 +64,17 @@ const controller = ((budgetCtrl, UICtrl) => {
     if (itemID) {
       splitID = itemID.split("-");
       type = splitID[0];
-      ID = splitID[1];
+      ID = parseInt(splitID[1]);
     }
+
+    //1. Delete the item from the data structure
+    budgetCtrl.deleteItem(type, ID);
+
+    //2. Delete the item from the UI
+    UICtrl.deleteListItem(itemID);
+
+    //3. Update the budget
+    updateBudget();
   };
 
   return {
