@@ -20,16 +20,25 @@ const controller = ((budgetCtrl, UICtrl) => {
   };
 
   const updateBudget = () => {
-    //calculate the budget
+    //1. Calculate the budget
     budgetCtrl.calculateBudget();
 
-    //return the budget
+    //2. Return the budget
     let budget = budgetCtrl.getBudget();
 
-    //display the budget on the UI
+    //3. Display the budget on the UI
     UICtrl.displayBudget(budget);
 
     console.log(budget);
+  };
+
+  const updatePercentages = () => {
+    //1. Calculate percentages
+    budgetCtrl.calculatePercentages();
+    //2. Read percentages from the budget controller
+    const percentages = budgetCtrl.getPercentages();
+    //3. Update the UI with the new percentages
+    console.log(percentages);
   };
 
   const ctrlAddItem = () => {
@@ -38,21 +47,24 @@ const controller = ((budgetCtrl, UICtrl) => {
     input = UICtrl.getInput();
 
     if (input.description !== "" && !isNaN(input.value) && input.value > 0) {
-      // Add the item to the budget controller
+      //1.  Add the item to the budget controller
       newItem = budgetCtrl.addNewItem(
         input.type,
         input.description,
         input.value
       );
 
-      //Add the item to the UI
+      //2. Add the item to the UI
       UICtrl.addListItem(newItem, input.type);
 
-      // Clear the fileds
+      //3.  Clear the fileds
       UICtrl.clearFields();
 
-      //calculate and update budget
+      //4. Calculate and update budget
       updateBudget();
+
+      //5. Calculate and update the percentages
+      updatePercentages();
     }
   };
 
@@ -75,6 +87,9 @@ const controller = ((budgetCtrl, UICtrl) => {
 
     //3. Update the budget
     updateBudget();
+
+    // 4. Calculate and update the percentages
+    updatePercentages();
   };
 
   return {
