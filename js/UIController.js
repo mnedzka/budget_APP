@@ -10,7 +10,8 @@ const UIController = (() => {
     incomeLabel: ".budget__income--value",
     expensesLabel: ".budget__expenses--value",
     percentageLabel: ".budget__expenses--percentage",
-    container: ".container"
+    container: ".container",
+    expensesPercLabel: ".item__percentage"
   };
 
   return {
@@ -86,6 +87,23 @@ const UIController = (() => {
       } else {
         document.querySelector(DOMStrings.percentageLabel).textContent = "---";
       }
+    },
+    displayPercentages(percentages) {
+      const fields = document.querySelectorAll(DOMStrings.expensesPercLabel);
+
+      const nodeListForEach = (list, callback) => {
+        list.forEach((item, i) => {
+          callback(list[i], i);
+        });
+      };
+
+      nodeListForEach(fields, (current, index) => {
+        if (percentages[index] > 0) {
+          current.textContent = percentages[index] + "%";
+        } else {
+          current.textContent = "---";
+        }
+      });
     },
     getDOMStrings() {
       return DOMStrings;
