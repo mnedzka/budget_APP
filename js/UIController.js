@@ -36,6 +36,12 @@ const UIController = (() => {
     return sign + " " + int + "." + dec;
   };
 
+  const nodeListForEach = (list, callback) => {
+    list.forEach((item, i) => {
+      callback(list[i], i);
+    });
+  };
+
   return {
     getInput() {
       return {
@@ -123,12 +129,6 @@ const UIController = (() => {
     displayPercentages(percentages) {
       const fields = document.querySelectorAll(DOMStrings.expensesPercLabel);
 
-      const nodeListForEach = (list, callback) => {
-        list.forEach((item, i) => {
-          callback(list[i], i);
-        });
-      };
-
       nodeListForEach(fields, (current, index) => {
         if (percentages[index] > 0) {
           current.textContent = percentages[index] + "%";
@@ -161,6 +161,22 @@ const UIController = (() => {
       year = now.getFullYear();
       document.querySelector(DOMStrings.dateLabel).textContent =
         months[month] + " " + year;
+    },
+
+    changedType() {
+      const fields = document.querySelectorAll(
+        DOMStrings.inputType +
+          "," +
+          DOMStrings.inputDescription +
+          "," +
+          DOMStrings.inputValue
+      );
+
+      nodeListForEach(fields, item => {
+        item.classList.toggle("red-focus");
+      });
+
+      document.querySelector(DOMStrings.inputBtn).classList.toggle("red");
     },
 
     getDOMStrings() {
