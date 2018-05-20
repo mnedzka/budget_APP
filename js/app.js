@@ -1,7 +1,7 @@
-import "./style.scss";
+import "../style.scss";
 
-import budgetController from "./js/budgetController";
-import UIController from "./js/UIController";
+import budgetController from "./budgetController";
+import UIController from "./UIController";
 
 const controller = ((budgetCtrl, UICtrl) => {
   const setupEventListeners = () => {
