@@ -11,7 +11,8 @@ const UIController = (() => {
     expensesLabel: ".budget__expenses--value",
     percentageLabel: ".budget__expenses--percentage",
     container: ".container",
-    expensesPercLabel: ".item__percentage"
+    expensesPercLabel: ".item__percentage",
+    dateLabel: ".budget__title--month"
   };
 
   const formatNumber = (num, type) => {
@@ -135,6 +136,31 @@ const UIController = (() => {
           current.textContent = "---";
         }
       });
+    },
+    displayMonth() {
+      let now, months, month, year;
+
+      months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+
+      now = new Date();
+
+      month = now.getMonth();
+      year = now.getFullYear();
+      document.querySelector(DOMStrings.dateLabel).textContent =
+        months[month] + " " + year;
     },
 
     getDOMStrings() {
